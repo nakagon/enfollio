@@ -1,0 +1,7 @@
+  <% flash.each do |message_type, message| %>
+  <% message_type = "warning" unless ["success","info","warning","denger",].include?(message_type) %>
+  <div class="alert alert-<%= message_type %> alert-dismissible" id="layout-alertfadeout">  
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <%= message %>
+    </div>
+  <% end %>

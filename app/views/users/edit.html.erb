@@ -1,0 +1,35 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">プロフィール</div>
+      <div class="panel-body">
+        <%= render 'profiles/form' , user:current_user %>
+      </div>  
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">スキル登録</div>
+      <div class="panel-body">
+        <%= render 'skills/form' , user:current_user %>  
+      </div>  
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">実績登録</div>
+      <div class="panel-body">
+        <%= render 'works/form' , user:current_user %>  
+      </div>  
+    </div>
+
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">リンク</div>
+      <div class="panel-body">
+        <%= render 'user_links/form' , user:current_user %>        
+      </div>
+    </div>
+  </div>
+</div>

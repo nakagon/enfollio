@@ -1,0 +1,106 @@
+<style>
+  .menu {
+    padding: 10px;
+    font-family: 'Open sans', sans-serif;
+    z-index: 100;      
+  }
+  .menu nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  .menu nav li {
+    font-weight: bold;
+    font-size: 24px;
+    padding: 0 20px;
+  }
+  .header-title { 
+    margin: 16px auto 24px auto;
+
+    padding-bottom: 10px;
+    border-bottom: inset 1px;
+
+  }
+
+  .title{
+    flex-basis: calc(100% - 75px - 30px);
+    text-align: center;
+  }
+  .description {
+    margin:10px 2px;
+  }
+  .shadow {
+    box-shadow: 0.1rem .2rem 1rem rgba(0,0,0,.15)
+  }
+  #links {
+    background-color:#101010;
+  }
+  .biography {
+    padding:12px;
+  }
+  section {
+    margin:10px 0;
+  }
+  section#links {
+    min-height:240px;
+    margin-bottom:0;
+  }
+</style>
+
+<div class="user-header row">
+  <div class="logo-area col-xs-12 col-sm-8 col-sm-offset-2">
+    <h1 class="logo text-center"><%= @user.profile.disp_name %>'s portfolio</h1>
+  </div>
+</div>
+
+<div class="menu">
+  <nav class="navbar">
+    <ul class="nav navbar-nav">
+      <li><%= link_to( { anchor: "profile" }) do  %>
+        <%= fa_icon "user lg"%> PROFILE
+      <% end %></li>
+
+      <li><%= link_to( { anchor: "skills" }) do  %>
+        <%= fa_icon "exclamation lg"%> SKILLS
+      <% end %></li>
+
+      <li><%= link_to( { anchor: "works" }) do  %>
+        <%= fa_icon "building lg"%> WORKS
+      <% end %></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="container">
+<section id="profile" class="row">
+  <h2 class="text-center header-title"><%= fa_icon "user lg"%>&nbsp;PROFILE</h2>
+  <div class="col-xs-12 col-md-4 col-md-offset-1">
+    <%= image_tag @user.profile.image,  :size => '300x300' , :class=>"img-circle center-block" %>
+  </div>
+  <div class="col-xs-12 col-md-6 biography">
+    <%= @user.profile.biography %>
+  </div>
+</section>
+
+<section id="skills" class="row">
+  <h2 class="text-center header-title"><%= fa_icon "exclamation lg"%>&nbsp;SKILLS</h2>
+  <%= render 'skills/lists' ,skills: @user.skills %>
+</section>
+
+</div>
+<section id="works" class="row">
+  <div class="container">
+    <h2 class="text-center header-title"><%= fa_icon "building lg"%>&nbsp;WORKS</h2>
+  </div>
+  <%= render 'works/lists' , works: @user.works %>
+</section>
+
+<section id="links" class="row">
+  <h2 class="text-center header-title"><%= fa_icon "building lg"%>&nbsp;LINKS</h2>
+  <%= render 'user_links/lists' , user_links: @user.user_links %>
+</section>

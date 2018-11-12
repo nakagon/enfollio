@@ -1,0 +1,18 @@
+<%= form_for(user.profile) do |f| %>
+  <%= f.hidden_field :user_id, :value => user.id %>
+    <div class="form-group form-inline">
+      <%= f.label "表示名", class: "control-label" %>
+      <%= f.text_field :disp_name, class: "form-control"%>
+      <%= f.label :birth, class: "control-label" %>
+      <%= f.date_field :birth , class: "form-control"%>
+    </div>
+    <div class="form-group">
+
+      <%= f.label :biography, class: "control-label" %>
+      <%= f.text_area :biography, size: "5x10", class: "form-control" %>
+      <%= f.label "画像" , class: "control-label"%>
+      <%= f.file_field :image, class: "filestyle" %>
+
+      <%= f.submit "submit", class: "col-xs-offset-11 btn btn-primary" %>
+  </div>
+<% end %>

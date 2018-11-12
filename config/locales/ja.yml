@@ -1,0 +1,14 @@
+ja:
+  enums:
+    skill:
+      age:
+        less1year: "1年未満"
+        over1year: "1年以上"
+        over3year: "3年以上"
+    user_link:
+      type:
+        github: "Github"
+        twitter: "Twitter"
+        facebook: "Facebook"
+        qiita: "Qiita"
+        other: "その他"
