@@ -11,7 +11,7 @@
   background-position: center;
   box-sizing: border-box;
   padding: 0px 0px;
-  height: 340px;
+  height: 300px;
   .logo-area {
     margin-top: 24px;
     padding: 50px;
@@ -25,5 +25,77 @@
     }
   }
 
+}
+
+
+
+.menu {
+  padding-top: 8px;
+  font-family:'Signika', sans-serif;
+  z-index: 100;
+  background-color: #fff;
+  width: 100%;
+  margin: 0;
+  text-align:center;
+  .nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width:100%;
+    li {
+      display:block;
+      font-weight: bold;
+      font-size: calc(16px + 0.25vw);
+      padding: 0 5px;
+      a {
+        padding-top: 8px;
+      }
+    }
+  }
+}
+
+
+  
+.fixed {
+  position: fixed;
+  top: 0;
+}
+
+.header-title { 
+  margin: 16px auto 24px auto;
+  font-family:'Signika', sans-serif;
+  padding-bottom: 10px;
+  border-bottom: inset 1px;
+}
+
+.title{
+  flex-basis: calc(100% - 75px - 30px);
+  text-align: center;
+}
+.description {
+  margin:10px 2px;
+}
+.shadow {
+  box-shadow: 0.1rem .2rem 1rem rgba(0,0,0,.15)
+}
+
+
+.biography {
+  padding:12px;
+}
+
+section {
+  margin:10px 0;
+}
+
+section#links {
+  background-color:#101010;
+  min-height:240px;
+  margin-bottom:0;
+  color: #dfdfdf;
 }
 

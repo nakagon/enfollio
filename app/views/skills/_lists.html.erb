@@ -1,0 +1,22 @@
+
+<div class="row">
+  <div class="col-xs-12 col-md-10 col-md-offset-1">
+    <% skills.each do | skill | %>
+      <div class="col-xs-12 col-md-4">
+        <div class="panel panel-default shadow">
+          <div class="panel-body">
+            <div class="title">
+              <h3><%= skill.skill_master.name %></h3>
+            </div>
+            <div class="description">
+              <div class="skill-year">経験年数：<%= skill.age_i18n %></div>
+            </div>
+            <div class="rating">
+              <%= render 'layouts/star_rating' , star: skill.level %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

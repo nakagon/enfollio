@@ -23,5 +23,13 @@
 
 .navbar {
   margin-bottom:0;
+  li{
+    a {
+      padding-top: 10px;
+    }
+  }
+  .caret {
+    margin: 14px 3px 0;
+  }
 }
 

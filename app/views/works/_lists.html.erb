@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <div class="row">
+      <% works.each do | work | %>
+        <div class="col-xs-12 col-md-4">
+          <div class="panel panel-default shadow">
+            <div class="image">
+              <%= image_tag work.image, :class=>"img-responsive" %>
+            </div>
+            <div class="panel-body">
+              <div class="title">
+                <h3><%= work.title %>
+              </div>
+              <div class="description">
+                <%= work.description %>
+              </div>
+              <% unless work.source_url.empty? %>
+                <div class="url">
+                  <%= link_to "ソースコード" , work.source_url %>
+                </div>
+              <% end %> 
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

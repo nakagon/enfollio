@@ -1,0 +1,47 @@
+<%= form_for(user, url: works_path, method: :post) do |f| %>
+<div class="table-responsive">
+
+  <table class="table table-striped table-bordered table-hover">
+    <%= f.hidden_field :user_id, :value => user.id %>
+    <tr>
+      <thead>
+        <th></th>
+        <th>サービス名</th>
+        <th>説明</th>
+        <th>サービスURL</th>
+        <th>ソースコードURL</th>
+        <th>画像</th>
+
+      </thead>
+    </tr>
+    <tr>
+      <%= f.nested_fields_for :works,  wrapper_tag: :tr do |s| %>
+        <td class="col-xs-1 text-center"><%= s.remove_nested_fields_link fa_icon "trash", class: 'btn btn-danger btn-circle', role: 'button' %></td>
+
+        <td><%= s.text_field :title ,class:"form-control" %></td>
+        <td><%= s.text_field :description ,class:"form-control" %></td>
+        <td><%= s.text_field :url,class:"form-control" %></td>
+        <td><%= s.text_field :source_url,class:"form-control" %></td>
+        <td>
+          <%= s.label :image, class: "btn btn-default" %>
+          <%= s.file_field :image, class: "filestyle" ,style: "display:none;" %>
+        </td>
+
+
+      <% end %>
+    </tr>
+
+    <tfoot>
+      <tr>
+        <td colspan="6" align="left">
+          <%= f.add_nested_fields_link :works, class: 'btn btn-success', role: 'button' do %>
+            <%= fa_icon "plus" %> Add
+          <% end %>
+          <%= f.submit "submit" , class: 'btn btn-primary'%>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+</div>
+<% end %>

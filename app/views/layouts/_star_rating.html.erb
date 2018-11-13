@@ -1,0 +1,27 @@
+<style>
+
+  .rating{
+    position: relative;
+    
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: auto;
+
+    font-size: 32px;
+    white-space: nowrap;
+  }
+
+  .rating:before{
+    content: attr(filter);
+    position: absolute;
+    
+    display: block;
+    
+    color: dodgerblue;
+    overflow: hidden;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+</style>
+<div class="rating" filter="<%= star_rating(star) %>">☆☆☆☆☆</div>

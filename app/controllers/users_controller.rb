@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def edit
     current_user.skills.build unless current_user.skills.present?
     current_user.user_links.build unless current_user.user_links.present?
+    current_user.works.build unless current_user.works.present?
   end
 
 end

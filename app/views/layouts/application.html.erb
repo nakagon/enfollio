@@ -3,14 +3,19 @@
   <head>
     <title>Enfollio</title>
     <%= csrf_meta_tags %>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="turbolinks-cache-control" content="no-cache">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'layouts/navbar' %>
-    <div class="container-fluid">
+    <div class="container-fluid" style="overflow:hidden">
         
       <%= yield %>
     <%= render 'layouts/footer' %>
