@@ -6,6 +6,7 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
 
     <%= f.nested_fields_for :skills,  wrapper_tag: :tr do |s| %>
+
       <td class="col-xs-1 text-center"><%= s.remove_nested_fields_link fa_icon "trash", class: 'btn btn-danger btn-circle', role: 'button' %></td>
       <td><%= s.collection_select :skill_master_id, SkillMaster.all, :id, :name ,{} ,{class:"form-control"} %></td>
       <td><%= s.select :age, Skill.ages_i18n.invert, {},class:"form-control" %></td>
@@ -16,7 +17,7 @@
     <tfoot>
       <tr>
         <td colspan="4" align="left">
-          <%= f.add_nested_fields_link :skills , class: 'btn btn-primary', role: 'button' do %>
+          <%= f.add_nested_fields_link :skills , class: 'btn btn-success', role: 'button' do %>
             <%= fa_icon "plus" %> Add
           <% end %>
           <%= f.submit "submit" , class: 'btn btn-primary'%>

@@ -8,12 +8,11 @@ class WorksController < ApplicationController
         work = current_user.works.find_or_initialize_by( id: param[:id]).tap do |s|
           s.title = param[:title]
           s.description = param[:description]
+          s.image = param[:image] if param[:image].present?
+
           s.url = param[:url]
-          s.image = param[:image]
           s.source_url = param[:source_url]
-          s.image = param[:image]
         end
-        p work
         work.save
       end
     end
@@ -24,7 +23,7 @@ class WorksController < ApplicationController
   def work_params
     params.require(:user).permit(
       :user_id,
-      works_attributes: [:id, :title, :description, :url, :source_url, :image, :_destroy],
+      works_attributes: [:id, :title, :description, :url, :source_url, :image,:_destroy],
     )
   end
 
