@@ -97,7 +97,8 @@ gem 'compass-rails', github: 'Compass/compass-rails'
 gem 'carrierwave'
 gem 'google-analytics-rails'
 gem 'nested_form_fields'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+gem "active_decorator"
 
 require 'erb'
 require 'yaml'

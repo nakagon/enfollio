@@ -17,6 +17,7 @@
           <ul id="navbar-list-menu" class="nav navbar-nav navbar-right visible-sm visible-xs">
               <li><%= link_to "マイページ", user_path(current_user) %></li>
               <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+              <li><%= link_to "お気に入りユーザー", follow_user_path(current_user) %>
               <li><%= link_to "ログアウト", destroy_user_session_path,  :method => "delete" %>
           </ul>
           <ul class="nav navbar-nav navbar-right  hidden-sm hidden-xs">
@@ -31,6 +32,7 @@
               <ul class="dropdown-menu" id="menu-dropdown">
                 <li><%= link_to "マイページ", user_path(current_user) %></li>
                 <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+                <li><%= link_to "お気に入りユーザー", follow_user_path(current_user) %>
                 <li><%= link_to "ログアウト", destroy_user_session_path,  :method => "delete" %>
               </ul>
             </li>

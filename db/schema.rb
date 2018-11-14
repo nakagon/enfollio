@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181112042636) do
+ActiveRecord::Schema.define(version: 20181113154336) do
+
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "like_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["like_id"], name: "index_likes_on_like_id", using: :btree
+    t.index ["user_id", "like_id"], name: "index_likes_on_user_id_and_like_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
+  end
 
   create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -91,6 +101,8 @@ ActiveRecord::Schema.define(version: 20181112042636) do
     t.index ["user_id"], name: "index_works_on_user_id", using: :btree
   end
 
+  add_foreign_key "likes", "users"
+  add_foreign_key "likes", "users", column: "like_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "skills", "skill_masters"
   add_foreign_key "skills", "users"

@@ -1,0 +1,63 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on 'turbolinks:load', ->
+  do ->
+    nav     = $("#user-menu")
+    if nav.length > 0
+      navpos  = nav.offset().top 
+    fixedmenu = () ->
+      currentpos = $(this).scrollTop()
+      if currentpos > navpos
+        nav.addClass("fixed").addClass("shadow")
+
+      else
+        nav.removeClass("fixed").removeClass("shadow")
+
+    smoothScroll = () ->
+      speed = 500
+      href= $(this).attr("href")
+      target = $(href == "#" ||  href)
+
+      if target.offset() == undefined
+        return
+      currentpos = $(window).scrollTop()
+
+      position = if navpos < currentpos then target.offset().top  - nav.height() else target.offset().top - nav.height() * 2
+
+      $("html, body").animate({scrollTop:position}, speed, "swing")
+      false
+
+    userStarSend = () ->
+      type = $(this).attr("type")
+      _this = $(this)
+
+      if type == "enable"
+        method = "DELETE"
+        url = '<%= Rails.application.routes.url_helpers.delete_likes_path format: :json %>'
+      else
+        method = "POST"
+        url = '<%= Rails.application.routes.url_helpers.likes_path format: :json %>'
+
+      $.ajax
+        url: url
+        dataType: "json"
+        type: method
+        data: {user_id: _this.attr("user_id")}
+        success: (results) ->
+          if type == "enable"
+            $(".user-panel-" +  _this.attr("user_id") ).fadeOut();
+            _this.attr("type", "disable")
+            _this.attr("src", "<%= image_path('common/star_disable.png') %>")
+          else          
+            _this.attr("type", "enable")
+            _this.attr("src", "<%= image_path('common/star_enable.png') %>")
+
+    $(window).on
+      'scroll': fixedmenu
+
+    $('a[href^="#"]').on
+      'click' : smoothScroll
+    
+    $('#user-star*').on
+      'click' : userStarSend

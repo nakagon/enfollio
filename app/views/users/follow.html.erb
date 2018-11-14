@@ -1,0 +1,73 @@
+
+<style>
+#users-list {
+  min-height:400px;
+}
+#users-list .username {
+  color: #14171a;
+  font-weight:bold;
+  font-size:20px;
+}
+
+#users-list .description a:link { color:#14171a; text-decoration:none }
+#users-list .description a:visited { color:#14171a; text-decoration:none }
+#users-list .description a:hover { color:#14171a; text-decoration:none }
+#users-list .description a:active { color:#14171a; text-decoration:none }
+
+#users-list .panel:hover {
+  background-color: #f5f8fa;
+}
+#users-list .panel {
+  transition: 0.2s;
+}
+.skillname {
+  display:inline-block;
+}
+.rating {
+  font-size: 20px;
+}
+.star-area {
+  display:inline-block;
+  vertical-align: top;
+  font-size: 18px;
+  padding-right:12px;
+}
+.star-area .star-num {
+  padding-left: 4px;
+}
+</style>
+
+<section id="users-list">
+  <div class="container">
+    <% # @follows.each  do |user| %>
+      <% (1..10).each do %>
+        <% user = current_user %>
+      <div class="user-panel-<%= user.id %> col-xs-12 col-md-4">
+        <div class="panel panel-default shadow">
+          <div class="panel-body">
+            <%= image_tag user.profile.image,  :size => '70x70' , :class=>"img-circle", :id=>"profile-image" %>
+            <div class="star-area pull-right">
+              <% type = current_user.follow?(user) ? "enable" : "disable" %>
+              <%= image_tag "common/star_#{type}.png", id:"user-star", type:type ,user_id:user.id ,size:"20x20" %>
+              <span class="star-num"><%= user.followers.count %></span>
+            </div>
+            <div class="description">
+              <%= link_to user_path(user) do %>
+                <p class="username"><%= user.profile.disp_name %></p>
+                <p><%= truncate(user.profile.biography, length:60) %></p>
+                <div class="skills">
+                  <% user.skills.order("level desc").limit(3).each do |skill| %>
+                    <div class="skill">
+                      <span class="skillname col-xs-4"><%= skill.skill_master.name %></span>
+                      <span class="col-xs-8"><%= render 'layouts/star_rating' , star: skill.level %></span>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

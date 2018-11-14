@@ -15,4 +15,11 @@ class UsersController < ApplicationController
     current_user.works.build unless current_user.works.present?
   end
 
+  def follow
+    @user = User.friendly.find_by(username: params[:id])
+    @follows = @user.follows
+      .includes(:profile, :skills, :user_links)
+
+  end
+
 end
